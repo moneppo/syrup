@@ -1,7 +1,9 @@
 var gulp = require('gulp');
 var uglify = require('gulp-uglify');
 var imagemin = require('gulp-imagemin');
+var cache = require('gulp-cached');
 var rimraf = require('rimraf');
+var acmg = require('./manifest-generator');
 
 var paths = {
   scripts: 'js/**/*.js',
@@ -15,28 +17,36 @@ gulp.task('clean', function(cb){
   rimraf('build/', cb);
 });
 
-gulp.task('scripts', ['clean'], function() {
+gulp.task('scripts', function() {
   // Minify and copy all JavaScript (except vendor scripts)
   return gulp.src(paths.scripts)
+    .pipe(cache('scripting'))
     .pipe(uglify())
     .pipe(gulp.dest('build/js'));
 });
 
 // Copy all static images
-gulp.task('images', ['clean'], function() {
+gulp.task('images', function() {
  return gulp.src(paths.images)
-    // Pass in options to the task
+    .pipe(cache('imaging'))
     .pipe(imagemin({optimizationLevel: 5}))
     .pipe(gulp.dest('build/img'));
 });
 
-gulp.task('templates', ['clean'], function() {
+gulp.task('templates',  function() {
   return gulp.src(paths.templates)
+    .pipe(cache('templating'))
     .pipe(gulp.dest('build/templates'));
 })
 
-gulp.task('manifest', ['clean'], function() {
-  return 
+gulp.task('cleanmanifest', function(cb) {
+  rimraf('build/app.manifest', cb);
+});
+
+gulp.task('manifest', ['cleanmanifest', 'scripts', 'images', 'templates'], function(cb) {
+  var gen = acmg('build', 'build/app.manifest');
+  var err = function (){}
+  gen.generate(err, cb);
 })
 
 // Rerun the task when a file changes

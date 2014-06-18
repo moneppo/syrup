@@ -21,7 +21,8 @@
     "gulp-uglify": "~0.3.0",
     "gulp-watch": "~0.6.6-1",
     "rimraf": "~2.2.8",
-    "gulp-imagemin": "~0.6.1"
+    "gulp-imagemin": "~0.6.1",
+    "gulp-cached": "0.0.3"
   },
   "dependencies": {
     "render-appcache-manifest": "~0.3.0",
