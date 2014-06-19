@@ -10,7 +10,7 @@
     "type": "git",
     "url": "https://github.com/moneppo/Syrup.git"
   },
-  "author": "moneppo",
+  "author": "Michael Oneppo <moneppo@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/moneppo/Syrup/issues"
@@ -22,10 +22,22 @@
     "gulp-watch": "~0.6.6-1",
     "rimraf": "~2.2.8",
     "gulp-imagemin": "~0.6.1",
-    "gulp-cached": "0.0.3"
+    "gulp-cached": "0.0.3",
+    "karma-script-launcher": "~0.1.0",
+    "karma-chrome-launcher": "~0.1.0",
+    "karma-firefox-launcher": "~0.1.0",
+    "karma-html2js-preprocessor": "~0.1.0",
+    "karma-jasmine": "~0.1.3",
+    "karma-requirejs": "~0.1.0",
+    "karma-coffee-preprocessor": "~0.1.0",
+    "karma-phantomjs-launcher": "~0.1.0",
+    "karma": ">=0.10.4",
+    "karma-ng-scenario": "~0.1.0",
+    "gulp-bower-files": "~0.2.5"
   },
   "dependencies": {
     "render-appcache-manifest": "~0.3.0",
-    "glob": "~4.0.2"
+    "glob": "~4.0.2",
+    "node-static": "~0.7.3"
   }
 }
